@@ -1,0 +1,11 @@
+{
+    "recommendations": [
+        "charliermarsh.ruff",
+        "eamodio.gitlens",
+        "github.vscode-github-actions",
+        "github.vscode-pull-request-github",
+        "ibm.output-colorizer",
+        "ms-python.python",
+        "usernamehw.errorlens",
+    ]
+}

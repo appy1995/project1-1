@@ -1,0 +1,15 @@
+{
+    "files.insertFinalNewline": true,
+    "editor.rulers": [
+        88,
+        120,
+    ],
+    "editor.tabSize": 4,
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 130,
+    "git.autofetch": true,
+    "python.analysis.diagnosticMode": "workspace",
+    "python.analysis.generateWithTypeAnnotation": true,
+    "python.analysis.typeCheckingMode": "strict",
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
+}
