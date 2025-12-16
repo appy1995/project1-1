@@ -11,3 +11,10 @@ repos:
     hooks:
       - id: mypy
         additional_dependencies: []
+
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.9.1
+    hooks:
+      - id: bandit
+        args: [ src, -r, -n, "3", -lll ]
+        exclude: .*
