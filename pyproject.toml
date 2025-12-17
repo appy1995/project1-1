@@ -1,17 +1,20 @@
 [project]
-name = "zephyr"
-version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
-requires-python = ">=3.14"
-dependencies = []
+    name = "zephyr"
+    version = "0.1.0"
+    description = "Add your description here"
+    readme = "README.md"
+    requires-python = ">=3.14"
+    dependencies = [
+        "pytest>=9.0.2",
+        "pytest-mock>=3.15.1",
+    ]
 
 [project.scripts]
-zephyr = "zephyr:main"
+    zephyr = "zephyr:main"
 
 [build-system]
-requires = ["uv_build>=0.9.17,<0.10.0"]
-build-backend = "uv_build"
+    requires = ["uv_build>=0.9.17,<0.10.0"]
+    build-backend = "uv_build"
 
 [dependency-groups]
     dev = [
@@ -69,12 +72,17 @@ build-backend = "uv_build"
     ]
 
     exclude = [
-        "tests/data"
+        "tests"
     ]
 
+
+[tool.mypy]
+    exclude = "tests"
 
 [tool.ruff.format]
     quote-style = "double"
     indent-style = "space"
     line-ending = "auto"
 
+[tool.pytest.ini_options]
+    testpaths = ["tests"]
