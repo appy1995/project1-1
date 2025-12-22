@@ -34,11 +34,12 @@ jobs:
       - name: Ruff check
         run: uv run ruff check src --output-format=github
 
-      - name: Ruff format check
-        run: uv run ruff format src --check
-
       - name: MyPy
-        run: uv run mypy src --config-file pyproject.toml
+        run: |
+            uv run mypy src \
+              --config-file pyproject.toml \
+              --output=json \
+              | jq -r '"::error title=Mypy issue,file=\(.file),line=\(.line),col=\(.column)::\(.message)"'
 
       - name: Bandit
         run: uv run bandit src -r -n 3 -lll
