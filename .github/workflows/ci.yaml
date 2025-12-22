@@ -36,7 +36,7 @@ jobs:
 
       - name: MyPy
         run: |
-            uv run mypy $SRC_PATH \
+            uv run mypy src \
               --config-file pyproject.toml \
               --output=json \
               | jq -r '"::error title=Mypy issue,file=\(.file),line=\(.line),col=\(.column)::\(.message)"'
