@@ -27,7 +27,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
+          username: appy1995
           password: ${{ secrets.GHCR_PAT }}
 
       - name: Build Docker image
@@ -37,13 +37,13 @@ jobs:
         run: docker push ghcr.io/${{ github.repository }}:${{ github.sha }}
 
       - name: Deploy
+        env:
+          GHCR_PAT: ${{ secrets.GHCR_PAT }}
         run: |
           ssh appy@100.64.0.10 "
-            docker login ghcr.io -u appy1995 -p $GHCR_PAT &&
+            # Use the PAT on the remote host for login
+            GHCR_PAT=${GHCR_PAT} docker login ghcr.io -u appy1995 -p \$GHCR_PAT &&
             docker pull ghcr.io/${{ github.repository }}:${{ github.sha }} &&
             docker stop project1 || true &&
             docker rm project1 || true &&
-            docker run -d --name project1 -p 80:80 ghcr.io/${{ github.repository }}:${{ github.sha }}
-          "
-        env:
-          GHCR_PAT: ${{ secrets.GHCR_PAT }}
+            docker run -d --name project1 -p 80:80 ghcr.io/${{ github.repository }}:${{ github.sha }}"
