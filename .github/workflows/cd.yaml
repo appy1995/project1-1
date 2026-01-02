@@ -41,14 +41,15 @@ jobs:
       - name: Push Docker image
         run: docker push ghcr.io/${{ github.repository }}:${{ github.sha }}
 
-      - name: Deploy
-        run: |
-          ssh appy@100.64.0.10 "
-            docker login ghcr.io -u appy1995 -p $GHCR_PAT &&
-            docker pull ghcr.io/${{ github.repository }}:${{ github.sha }} &&
-            docker stop project1 || true &&
-            docker rm project1 || true &&
-            docker run -d --name project1 -p 80:80 ghcr.io/${{ github.repository }}:${{ github.sha }}
-          "
-        env:
-          GHCR_PAT: ${{ secrets.GHCR_PAT }}
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          port: ${{ secrets.SSH_PORT }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            docker pull ghcr.io/${{ github.repository }}:${{ github.sha }}
+            docker stop project1 || true
+            docker rm project1 || true
+            docker run -d --name project1 -p 8080:80 ghcr.io/${{ github.repository }}:${{ github.sha }}
