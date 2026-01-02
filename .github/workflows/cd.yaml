@@ -23,11 +23,6 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Test Docker login
-        run: |
-          docker info
-          docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.GHCR_PAT }}
-
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -49,7 +44,7 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            docker pull ghcr.io/${{ github.repository }}:${{ github.sha }}
-            docker stop project1 || true
-            docker rm project1 || true
-            docker run -d --name project1 -p 8080:80 ghcr.io/${{ github.repository }}:${{ github.sha }}
+            /usr/local/bin/docker pull ghcr.io/${{ github.repository }}:${{ github.sha }}
+            /usr/local/bin/docker stop project1 || true
+            /usr/local/bin/docker rm project1 || true
+            /usr/local/bin/docker run -d --name project1 -p 8080:80 ghcr.io/${{ github.repository }}:${{ github.sha }}
