@@ -5,6 +5,7 @@ permissions:
   packages: write
 
 on:
+  workflow_dispatch:
   workflow_run:
     workflows: ["Check pull request"]
     types:
