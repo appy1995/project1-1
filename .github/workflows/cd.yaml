@@ -4,12 +4,16 @@ permissions:
   contents: read
   packages: write
 
+# on:
+#   workflow_run:
+#     workflows: ["Check pull request"]
+#     types:
+#       - completed
+
 on:
-  workflow_dispatch:
-  workflow_run:
-    workflows: ["Check pull request"]
-    types:
-      - completed
+  push:
+    branches:
+      - main
 
 jobs:
   deploy:
