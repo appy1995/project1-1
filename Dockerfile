@@ -1,4 +1,3 @@
-# Use an image with Python 3.14
 FROM python:3.11-slim-bullseye
 
 # Install Java 17 (required for Spark)
@@ -24,5 +23,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY src/ ./src/
 COPY data/ ./data/
 
-# Default command
 CMD ["python", "src/zephyr/main.py"]
