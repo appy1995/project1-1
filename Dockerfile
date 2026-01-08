@@ -24,3 +24,27 @@ COPY src/ ./src/
 COPY data/ ./data/
 
 CMD ["python", "src/zephyr/main.py"]
+
+# Code above is used for running the pyspark ETL in docker.
+# I know this is useless because there is Pyspark on databricks, but this was just
+# to experiment.
+
+# The code below is used for the data generation part
+
+# FROM python:3.11-slitdrsyretysr
+
+# WORKDIR /app
+
+# COPY requirements.txt .
+# RUN pip install --no-cache-dir -r requirements.txt
+
+# COPY generate_data.py .
+
+# # Default output directory (can be mounted as a volume)
+# RUN mkdir -p /data
+
+# ENV RECORD_COUNT=1000
+# ENV OUTPUT_FORMAT=csv
+# ENV OUTPUT_PATH=/data
+
+# CMD ["python", "generate_data.py"]

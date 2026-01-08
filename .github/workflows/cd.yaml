@@ -35,13 +35,13 @@ jobs:
 
       - name: Push Docker image
         run: docker push ghcr.io/${{ github.repository }}:${{ github.sha }}
-
+  
       # for the following step, i needed to configure my mac so github actions
       # could ssh into my mac
-      # i had to copy the private key in github secrets of the (forked) repo
-      # i also needed to make sure the public key is in ~/.ssh/authorized_keys
+      # i had to paste the private key in github secrets of the (forked) repo
+      # i also needed to make sure the public key is in ~/.ssh/authorized_keys on my mac
       # also, macOS SSH sessions do not load full path, therefore i needed to:
-      # create/edit ~/.zshenv
+      # create/edit: ~/.zshenv
       # in there i needed to add: export PATH="/usr/local/bin:/opt/homebrew/bin:$PATH"
       # this ensured that docker was available in non-interactive SSH sessions
       # another problem was that docker desktop uses keychain so:
@@ -68,5 +68,5 @@ jobs:
             /usr/local/bin/docker rm project1 || true
             /usr/local/bin/docker run -d --name project1 -p 8080:80 ghcr.io/${{ github.repository }}:${{ github.sha }}
       # i currently have nothing i can deploy to, so i temporarily set it up to use my
-      # mac for practise and that's why it got a bit messy
+      # mac for practise/learning and that's why it got a bit messy
       # i should be able to use appleboy if i have a server i can deploy to
