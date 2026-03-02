@@ -1,6 +1,6 @@
 import os
 import random
-from datetime import datetime
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -27,7 +27,7 @@ GENRES = ["Pop", "Rock", "Hip-Hop", "EDM", "Jazz", "Classical"]
 
 artists = [fake.name() for _ in range(NUM_ARTISTS)]
 
-songs = []
+songs: list[dict[str, Any]] = []
 
 for artist in artists:
     for _ in range(NUM_SONGS_PER_ARTIST):
@@ -42,7 +42,6 @@ for artist in artists:
         )
 
 master_songs_df = pd.DataFrame(songs)
-ingest_date = datetime.today().strftime("%Y-%m-%d")
 
 
 # ------------------------
@@ -70,7 +69,7 @@ def generate_platform_data(
     # ------------------------
     # USERS
     # ------------------------
-    users = []
+    users: list[dict[str, Any]] = []
 
     for i in range(1, NUM_USERS + 1):
         users.append(
@@ -94,7 +93,7 @@ def generate_platform_data(
     weights = np.linspace(1, len(songs_df), len(songs_df))
     weights /= weights.sum()
 
-    streams = []
+    streams: list[dict[str, Any]] = []
 
     for i in range(1, NUM_STREAMS + 1):
         user = users_df.sample(1).iloc[0]
@@ -115,7 +114,7 @@ def generate_platform_data(
     # ------------------------
     # SAVE RAW FILES
     # ------------------------
-    base_folder = os.path.join("data", "raw", platform_name, f"ingest={ingest_date}")
+    base_folder = os.path.join("data", "raw", platform_name)
     os.makedirs(base_folder, exist_ok=True)
 
     users_df.to_csv(
