@@ -1,72 +1,72 @@
-name: CD
+# name: CD
 
-permissions:
-  contents: read
-  packages: write
+# permissions:
+#   contents: read
+#   packages: write
+
+# # on:
+# #   workflow_run:
+# #     workflows: ["Check pull request"]
+# #     types:
+# #       - completed
 
 # on:
-#   workflow_run:
-#     workflows: ["Check pull request"]
-#     types:
-#       - completed
+#   push:
+#     branches:
+#       - main
+#       - feature/**
 
-on:
-  push:
-    branches:
-      - main
-      - feature/**
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout repo
+#         uses: actions/checkout@v4
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
+#       - name: Login to GitHub Container Registry
+#         uses: docker/login-action@v3
+#         with:
+#           registry: ghcr.io
+#           username: ${{ github.actor }}
+#           password: ${{ secrets.GHCR_PAT }}
 
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GHCR_PAT }}
+#       - name: Build Docker image
+#         run: docker build -t ghcr.io/${{ github.repository }}:${{ github.sha }} .
 
-      - name: Build Docker image
-        run: docker build -t ghcr.io/${{ github.repository }}:${{ github.sha }} .
-
-      - name: Push Docker image
-        run: docker push ghcr.io/${{ github.repository }}:${{ github.sha }}
+#       - name: Push Docker image
+#         run: docker push ghcr.io/${{ github.repository }}:${{ github.sha }}
   
-      # for the following step, i needed to configure my mac so github actions
-      # could ssh into my mac
-      # i had to paste the private key in github secrets of the (forked) repo
-      # i also needed to make sure the public key is in ~/.ssh/authorized_keys on my mac
-      # also, macOS SSH sessions do not load full path, therefore i needed to:
-      # create/edit: ~/.zshenv
-      # in there i needed to add: export PATH="/usr/local/bin:/opt/homebrew/bin:$PATH"
-      # this ensured that docker was available in non-interactive SSH sessions
-      # another problem was that docker desktop uses keychain so:
-      # nano ~/.docker/config.json
-      # deleted everything except for "auths" and "ghcr.io"
-      # then logged in again without keychain: docker login ghcr.io -u <github-username>
-      # and for the password i created a PAT with read:packages only
-      # then verified that the credentials were stored directly in config.json
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.2.4
-        with:
-          # for now i use ngrok tcp 22 to expose SSH to github actions
-          # the github secrets need to be updated everytime ngrok is restarted
-          host: ${{ secrets.SSH_HOST }}
-          port: ${{ secrets.SSH_PORT }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          # when i ssh in, the session is non-interactive, zsh doesn't load your usual
-          # environment and Docker isn't in the PATH, so we need to use the full path
-          # to Docker: /usr/local/bin/docker
-          script: |
-            /usr/local/bin/docker pull ghcr.io/${{ github.repository }}:${{ github.sha }}
-            /usr/local/bin/docker stop project1 || true
-            /usr/local/bin/docker rm project1 || true
-            /usr/local/bin/docker run -d --name project1 -p 8080:80 ghcr.io/${{ github.repository }}:${{ github.sha }}
-      # i currently have nothing i can deploy to, so i temporarily set it up to use my
-      # mac for practise/learning and that's why it got a bit messy
-      # i should be able to use appleboy if i have a server i can deploy to
+#       # for the following step, i needed to configure my mac so github actions
+#       # could ssh into my mac
+#       # i had to paste the private key in github secrets of the (forked) repo
+#       # i also needed to make sure the public key is in ~/.ssh/authorized_keys on my mac
+#       # also, macOS SSH sessions do not load full path, therefore i needed to:
+#       # create/edit: ~/.zshenv
+#       # in there i needed to add: export PATH="/usr/local/bin:/opt/homebrew/bin:$PATH"
+#       # this ensured that docker was available in non-interactive SSH sessions
+#       # another problem was that docker desktop uses keychain so:
+#       # nano ~/.docker/config.json
+#       # deleted everything except for "auths" and "ghcr.io"
+#       # then logged in again without keychain: docker login ghcr.io -u <github-username>
+#       # and for the password i created a PAT with read:packages only
+#       # then verified that the credentials were stored directly in config.json
+#       - name: Deploy via SSH
+#         uses: appleboy/ssh-action@v1.2.4
+#         with:
+#           # for now i use ngrok tcp 22 to expose SSH to github actions
+#           # the github secrets need to be updated everytime ngrok is restarted
+#           host: ${{ secrets.SSH_HOST }}
+#           port: ${{ secrets.SSH_PORT }}
+#           username: ${{ secrets.SSH_USER }}
+#           key: ${{ secrets.SSH_PRIVATE_KEY }}
+#           # when i ssh in, the session is non-interactive, zsh doesn't load your usual
+#           # environment and Docker isn't in the PATH, so we need to use the full path
+#           # to Docker: /usr/local/bin/docker
+#           script: |
+#             /usr/local/bin/docker pull ghcr.io/${{ github.repository }}:${{ github.sha }}
+#             /usr/local/bin/docker stop project1 || true
+#             /usr/local/bin/docker rm project1 || true
+#             /usr/local/bin/docker run -d --name project1 -p 8080:80 ghcr.io/${{ github.repository }}:${{ github.sha }}
+#       # i currently have nothing i can deploy to, so i temporarily set it up to use my
+#       # mac for practise/learning and that's why it got a bit messy
+#       # i should be able to use appleboy if i have a server i can deploy to
