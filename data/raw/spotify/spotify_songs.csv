@@ -1,51 +1,51 @@
-song_id,title,artist,genre,duration,release_date
-S0001,Special boy,Patricia Roberts,Rock,199,2023-05-16
-S0002,Under everyone,Patricia Roberts,Hip-Hop,159,2021-07-05
-S0003,College far more,Patricia Roberts,Pop,192,2021-12-31
-S0004,Company brother need,Patricia Roberts,Hip-Hop,273,2025-09-26
-S0005,Gas friend,Patricia Roberts,EDM,124,2021-05-27
-S0006,Like successful,Tiffany Stevens,Hip-Hop,358,2023-03-09
-S0007,Board walk,Tiffany Stevens,Rock,287,2021-11-27
-S0008,Structure next become history,Tiffany Stevens,EDM,325,2025-02-08
-S0009,Protect,Tiffany Stevens,Classical,235,2025-04-13
-S0010,Animal build many,Tiffany Stevens,Classical,159,2024-10-07
-S0011,Then source score let,Amy White,Rock,230,2023-12-04
-S0012,Foot what,Amy White,Hip-Hop,313,2024-12-09
-S0013,Approach four,Amy White,Jazz,293,2022-07-26
-S0014,Lot scientist degree,Amy White,Jazz,238,2023-09-15
-S0015,Front them southern,Amy White,Classical,252,2025-08-01
-S0016,Man country,Joyce Carlson,Hip-Hop,207,2022-06-28
-S0017,Class treatment board responsibility,Joyce Carlson,Rock,206,2025-03-15
-S0018,Day else result,Joyce Carlson,Hip-Hop,177,2024-09-14
-S0019,Radio such style,Joyce Carlson,Rock,247,2022-12-03
-S0020,Must friend subject available,Joyce Carlson,Hip-Hop,257,2023-07-03
-S0021,Class east civil,Shari Gardner,Rock,227,2022-11-13
-S0022,Treat toward capital,Shari Gardner,Hip-Hop,360,2023-03-31
-S0023,Whatever on hit,Shari Gardner,Jazz,139,2021-09-14
-S0024,Start religious machine fund,Shari Gardner,Rock,227,2023-04-06
-S0025,Ground ground,Shari Gardner,Hip-Hop,163,2022-03-19
-S0026,Camera left social,Christopher Alvarez,Pop,199,2022-08-03
-S0027,Cover,Christopher Alvarez,Classical,150,2024-01-20
-S0028,Economy above guy,Christopher Alvarez,Rock,190,2025-06-18
-S0029,White beautiful sure,Christopher Alvarez,Jazz,263,2024-08-11
-S0030,A get,Christopher Alvarez,Jazz,284,2021-03-09
-S0031,Different similar,Kristen Fernandez,Classical,159,2021-09-09
-S0032,Likely make past performance,Kristen Fernandez,Hip-Hop,300,2021-12-22
-S0033,Special girl,Kristen Fernandez,EDM,349,2022-04-22
-S0034,Heart forget bill,Kristen Fernandez,Classical,129,2025-03-03
-S0035,Out go,Kristen Fernandez,Hip-Hop,134,2023-06-12
-S0036,Imagine laugh financial,Richard Gonzales,Hip-Hop,252,2023-02-17
-S0037,Kid read thing,Richard Gonzales,Pop,287,2021-09-02
-S0038,Step four,Richard Gonzales,Jazz,148,2021-06-30
-S0039,Relate community appear,Richard Gonzales,EDM,205,2023-03-26
-S0040,Place peace,Richard Gonzales,Jazz,256,2021-05-14
-S0041,Star party drug list,Christine Parrish,Rock,164,2025-11-20
-S0042,Effort let,Christine Parrish,Pop,220,2021-03-07
-S0043,Really claim environmental leg,Christine Parrish,Rock,199,2024-01-22
-S0044,Away detail despite article,Christine Parrish,Hip-Hop,348,2022-10-19
-S0045,Administration our strong,Christine Parrish,Jazz,256,2026-01-09
-S0046,Major set plant,Dennis Harris,Rock,132,2025-10-02
-S0047,Song,Dennis Harris,EDM,178,2025-04-17
-S0048,Foot themselves,Dennis Harris,Pop,126,2022-08-08
-S0049,Mention put,Dennis Harris,Rock,231,2021-09-13
-S0050,High sport,Dennis Harris,Jazz,297,2022-09-09
+song_id,title,artist_id,genre,duration,release_date
+S0001,Rate recent,S_A0001,Jazz,120,2023-04-22
+S0002,Option stand,S_A0001,EDM,210,2023-12-29
+S0003,Note country,S_A0001,Classical,295,2024-01-16
+S0004,Soon interest race wonder,S_A0001,EDM,222,2024-05-08
+S0005,Science,S_A0001,Rock,340,2021-07-19
+S0006,Deal really nothing,S_A0002,Jazz,328,2021-03-13
+S0007,To especially fast,S_A0002,Classical,360,2022-01-31
+S0008,Bag for,S_A0002,Rock,222,2023-05-23
+S0009,Pull alone perform,S_A0002,Rock,145,2022-05-28
+S0010,Kind hold,S_A0002,EDM,232,2022-06-01
+S0011,Throw easy put,S_A0003,Classical,251,2021-05-29
+S0012,Action place,S_A0003,Classical,315,2021-06-24
+S0013,Computer fear,S_A0003,Pop,210,2023-03-23
+S0014,Research protect body,S_A0003,Hip-Hop,323,2025-06-14
+S0015,Almost play,S_A0003,Jazz,344,2022-03-27
+S0016,Example thing tough,S_A0004,Pop,135,2021-11-19
+S0017,Deep respond green,S_A0004,Classical,242,2022-09-19
+S0018,Real could upon,S_A0004,Hip-Hop,192,2024-04-17
+S0019,Maintain mean,S_A0004,EDM,244,2023-06-13
+S0020,Bad although and,S_A0004,Rock,341,2023-02-12
+S0021,Expect form develop heart,S_A0005,EDM,211,2022-07-25
+S0022,Develop red,S_A0005,Rock,169,2022-05-18
+S0023,Want plant ago sometimes,S_A0005,Jazz,127,2023-05-01
+S0024,Newspaper consider cell,S_A0005,Jazz,302,2021-07-29
+S0025,Business fill certain,S_A0005,Classical,196,2024-02-17
+S0026,Education candidate,S_A0006,Jazz,128,2024-08-09
+S0027,Outside,S_A0006,EDM,143,2024-03-31
+S0028,Detail find morning,S_A0006,Classical,248,2025-04-07
+S0029,And big responsibility,S_A0006,Pop,175,2024-11-13
+S0030,List daughter free,S_A0006,Jazz,187,2021-08-07
+S0031,Memory however rather,S_A0007,Pop,161,2025-07-22
+S0032,Wind contain,S_A0007,EDM,245,2023-12-06
+S0033,Long soldier,S_A0007,Rock,293,2023-09-22
+S0034,Land truth,S_A0007,Classical,196,2024-05-07
+S0035,Son,S_A0007,Classical,345,2024-05-23
+S0036,Single official hair,S_A0008,Rock,248,2024-01-16
+S0037,Raise wind magazine,S_A0008,EDM,358,2024-11-16
+S0038,List school,S_A0008,Hip-Hop,191,2021-09-27
+S0039,Case at kid,S_A0008,EDM,318,2022-04-03
+S0040,Major short,S_A0008,Classical,341,2021-12-07
+S0041,Hair majority economy,S_A0009,Jazz,174,2026-02-21
+S0042,Little down,S_A0009,Hip-Hop,345,2022-06-11
+S0043,Answer series,S_A0009,Pop,201,2025-10-04
+S0044,Evidence program,S_A0009,Classical,319,2026-01-24
+S0045,Month message,S_A0009,Hip-Hop,230,2021-11-17
+S0046,Level condition,S_A0010,Jazz,262,2023-01-10
+S0047,Mr type consumer central,S_A0010,Hip-Hop,237,2021-09-03
+S0048,Worry him arm,S_A0010,EDM,231,2024-02-28
+S0049,Trip,S_A0010,Classical,250,2021-07-02
+S0050,Thing during policy religious,S_A0010,Rock,336,2023-07-03
